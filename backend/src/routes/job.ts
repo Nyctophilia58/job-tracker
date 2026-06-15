@@ -9,9 +9,9 @@ import {
   uploadCV,
   deleteCV,
   sendReminderNow,
-} from "../controllers/jobControllers";
-import { authMiddleware } from "../middleware/authMiddlewares";
-import { upload } from "../config/multer";
+} from "../controllers/jobControllers.js";
+import { authMiddleware } from "../middleware/authMiddlewares.js";
+import { upload } from "../config/multer.js";
 
 const router = Router();
 

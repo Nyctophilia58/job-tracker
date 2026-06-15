@@ -1,6 +1,6 @@
-import Job from "../models/Job";
-import User from "../models/User";
-import { sendFollowUpEmail } from "./emailService";
+import Job from "../models/Job.js";
+import User from "../models/User.js";
+import { sendFollowUpEmail } from "./emailService.js";
 
 export const checkAndSendReminders = async () => {
   try {

@@ -1,8 +1,8 @@
-import User from "../models/User";
+import User from "../models/User.js";
 import { Request, Response } from "express";
-import { generateToken, verifyToken } from "../services/jwtServices";
-import { hashPassword, comparePassword } from "../services/hashServices";
-import { sendResetEmail } from "../services/emailService";
+import { generateToken, verifyToken } from "../services/jwtServices.js";
+import { hashPassword, comparePassword } from "../services/hashServices.js";
+import { sendResetEmail } from "../services/emailService.js";
 
 export const register = async (req: Request, res: Response): Promise<void> => {
   try {
