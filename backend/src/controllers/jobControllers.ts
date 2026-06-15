@@ -6,7 +6,7 @@ import { Types } from "mongoose";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { sendFollowUpEmail } from "../services/emailService";
+import { sendFollowUpEmail } from "../services/emailService.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
