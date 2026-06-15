@@ -1,0 +1,82 @@
+@baseUrl = http://localhost:5000/api
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.example
+
+### Register a new user
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "password123"
+}
+
+### Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+
+### Get all jobs (supports query params: status, sort, search)
+GET {{baseUrl}}/jobs
+Authorization: Bearer {{token}}
+
+### Get jobs with filters
+GET {{baseUrl}}/jobs?status=applied&sort=newest&search=google
+Authorization: Bearer {{token}}
+
+### Get a single job
+GET {{baseUrl}}/jobs/REPLACE_WITH_JOB_ID
+Authorization: Bearer {{token}}
+
+### Create a new job
+POST {{baseUrl}}/jobs
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "company": "Google",
+  "role": "Frontend Developer",
+  "status": "applied",
+  "appliedDate": "2025-06-01",
+  "jobUrl": "https://careers.google.com/job/123",
+  "salary": 120000,
+  "notes": "Referred by a friend"
+}
+
+### Update a job
+PATCH {{baseUrl}}/jobs/REPLACE_WITH_JOB_ID
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "status": "interviewing",
+  "notes": "Phone screen scheduled for next week"
+}
+
+### Delete a job
+DELETE {{baseUrl}}/jobs/REPLACE_WITH_JOB_ID
+Authorization: Bearer {{token}}
+
+### Get job stats
+GET {{baseUrl}}/jobs/stats
+Authorization: Bearer {{token}}
+
+### Upload a CV
+POST {{baseUrl}}/jobs/REPLACE_WITH_JOB_ID/cv
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="cv"; filename="resume.pdf"
+Content-Type: application/pdf
+
+< ./resume.pdf
+--boundary
+
+### Delete a CV
+DELETE {{baseUrl}}/jobs/REPLACE_WITH_JOB_ID/cv
+Authorization: Bearer {{token}}
