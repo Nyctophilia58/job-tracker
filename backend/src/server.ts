@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import path from "path";
 import swaggerUi from "swagger-ui-express";
 import { fileURLToPath } from "url";
-import { connectDB } from "./config/db";
+import { connectDB } from "./config/db.js";
 import { swaggerSpec } from "./config/swagger";
 import jobRoutes from "./routes/job.js";
 import authRoutes from "./routes/auth.js";
