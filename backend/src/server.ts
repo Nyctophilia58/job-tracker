@@ -5,10 +5,10 @@ import path from "path";
 import swaggerUi from "swagger-ui-express";
 import { fileURLToPath } from "url";
 import { connectDB } from "./config/db.js";
-import { swaggerSpec } from "./config/swagger";
+import { swaggerSpec } from "./config/swagger.js";
 import jobRoutes from "./routes/job.js";
 import authRoutes from "./routes/auth.js";
-import checkAndSendReminders from "./services/reminderService";
+import checkAndSendReminders from "./services/reminderService.js";
 
 dotenv.config();
 
