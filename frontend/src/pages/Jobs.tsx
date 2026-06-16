@@ -134,8 +134,26 @@ const Jobs = () => {
   };
 
   const handleStatusChange = async (jobId: string, newStatus: JobStatus) => {
-    await updateJob(jobId, { status: newStatus });
-    fetchJobs();
+    // Optimistically update UI without full refresh
+    const originalJob = jobs.find((j) => j._id === jobId);
+    if (!originalJob) return;
+
+    // Update local state immediately
+    setJobs((prev) =>
+      prev.map((j) => (j._id === jobId ? { ...j, status: newStatus } : j)),
+    );
+
+    try {
+      await updateJob(jobId, { status: newStatus });
+    } catch (err) {
+      // Revert UI change on failure
+      setJobs((prev) =>
+        prev.map((j) =>
+          j._id === jobId ? { ...j, status: originalJob.status } : j,
+        ),
+      );
+      alert("Failed to update job status");
+    }
   };
 
   return (
