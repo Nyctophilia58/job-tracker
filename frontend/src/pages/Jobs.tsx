@@ -145,7 +145,7 @@ const Jobs = () => {
 
     try {
       await updateJob(jobId, { status: newStatus });
-    } catch (err) {
+    } catch {
       // Revert UI change on failure
       setJobs((prev) =>
         prev.map((j) =>
